@@ -106,9 +106,9 @@ $colors: (
 
 
 //variables
-
+//04B404 B604B0
 $colors: (
-  primary:    #04B404,
+  primary:    #B604B0, 
   secondary:  #5882FA,
   danger:     #FE2E2E,
   light:      #A9E2F3,
@@ -133,4 +133,6 @@ $colors: (
 
 $text-color:#888888;
 
-$tabs-tab-color-active: #598B11;
+$tabs-tab-color-active: red;//598B11
+
+$tabs-background: yellow;

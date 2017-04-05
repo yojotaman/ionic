@@ -1,0 +1,14 @@
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Almacenes_exito_logo.svg/245px-Almacenes_exito_logo.svg.png" />
+<h1>Login</h1>
+<ion-item>
+    <ion-label color="primary" stacked>Email</ion-label>
+    <ion-input [(ngModel)]="user.email" type="email" placeholder="Email"></ion-input>
+</ion-item>
+
+<ion-item>
+    <ion-label color="primary" stacked>Password</ion-label>
+    <ion-input [(ngModel)]="user.password" type="password" placeholder="Password"></ion-input>
+</ion-item>
+
+<button ion-button (tap)="login()">Login</button>
+<button ion-button (tap)="signIn()" color="secondary">Sign In</button>
