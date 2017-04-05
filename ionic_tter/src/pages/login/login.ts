@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
-import { AlertController, LoadingController } from 'ionic-angular';
+import { AlertController, LoadingController, NavController } from 'ionic-angular';
+
+import {TabsPage} from '../tabs/tabs';
 
 @Component({
   selector: 'page-login',
@@ -10,7 +12,10 @@ export class LoginPage {
 
     user = {"email": "", "password":""};
 
-    constructor(private alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+    constructor(
+        private alertCtrl: AlertController, 
+        public loadingCtrl: LoadingController,
+        public navCtrl: NavController) {
     }
 
     ngOnInit(){
@@ -26,14 +31,9 @@ export class LoginPage {
             loading.present();
             setTimeout(() => {
                 loading.dismiss();
+                this.navCtrl.push(TabsPage);
+              
                 
-                // mensaje de error
-                let alert = this.alertCtrl.create({
-                    title: 'Login',
-                    subTitle: 'Login correcto',
-                    buttons: ['Aceptar']
-                });
-                alert.present();
             }, 5000);
         }
         else{

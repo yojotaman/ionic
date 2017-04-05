@@ -7,6 +7,15 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 
+
+//refactor por router
+
+var links = [
+  {component: LoginPage, name:'Login', segment:'login'},
+  {component: TabsPage, name: 'tabs', segment: 'tabs' }
+
+];
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -20,7 +29,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     LoginPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {}, links)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
