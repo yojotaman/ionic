@@ -23,6 +23,32 @@ $font-path: "../assets/fonts";
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/v2/theming/
+$font-path: "../assets/fonts";
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+/*
 $colors: (
   primary:    #387ef5,
   secondary:  #32db64,
@@ -30,7 +56,7 @@ $colors: (
   light:      #f4f4f4,
   dark:       #222
 );
-
+*/
 
 // App iOS Variables
 // --------------------------------------------------
@@ -68,7 +94,7 @@ $colors: (
 // The premium icon font for Ionic. For more info, please see:
 // http://ionicframework.com/docs/v2/ionicons/
 
-@import "ionic.ionicons";
+@import "ionicons";
 
 
 // Fonts
@@ -76,3 +102,35 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+
+
+//variables
+
+$colors: (
+  primary:    #04B404,
+  secondary:  #5882FA,
+  danger:     #FE2E2E,
+  light:      #A9E2F3,
+  dark:       #000000,
+
+  reply:(
+    base: #55acee,
+    contrast: #ffffff
+  ),
+
+  replay_color:(
+    base: #55acee,
+    contrast: #000000
+  ),
+
+  headerColor:(
+    base:#04B404,
+    contrast: #000000
+  )
+
+);
+
+$text-color:#888888;
+
+$tabs-tab-color-active: #598B11;
