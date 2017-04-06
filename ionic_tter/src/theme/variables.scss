@@ -108,8 +108,8 @@ $colors: (
 //variables
 //04B404 B604B0
 $colors: (
-  primary:    #B604B0, 
-  secondary:  #5882FA,
+  primary:    #FF0000, 
+  secondary:  #FF0000,
   danger:     #FE2E2E,
   light:      #A9E2F3,
   dark:       #000000,
@@ -125,14 +125,14 @@ $colors: (
   ),
 
   headerColor:(
-    base:#04B404,
+    base:#474E47,
     contrast: #000000
   )
 
 );
 
-$text-color:#888888;
+$text-color:black; //888888
 
 $tabs-tab-color-active: red;//598B11
 
-$tabs-background: yellow;
+//$tabs-background: yellow;

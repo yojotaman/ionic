@@ -28,7 +28,7 @@ export class Fav {
           this.test = "primary";
         this.icon = "ios-heart";
         //obtener el valor inicial
-        let cant:number = parseInt(this.cantidad) + 1;
+        let cant:number = parseInt(this.cantidad)+1;
         
         this.listado.update(this.key, {
           fav : cant
@@ -40,14 +40,14 @@ export class Fav {
           this.test = "";
         this.icon = "ios-heart-outline";
         //obtener el valor inicial
-        let cant:number = parseInt(this.cantidad) - 1;
+        let cant:number = parseInt(this.cantidad)-1;
         
         this.listado.update(this.key, {
           fav : cant
         });
         
       }
-      this.onFav.emit("gracias por hacer fav");
+      this.onFav.emit("gracias por darle me gusta");
   }
 
 
