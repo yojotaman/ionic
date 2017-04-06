@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 
-import { Notifications } from '../../commons/notification';
+//import { Notifications } from '../../commons/notification';
 
 @Component({
   selector: 'ver-notification',
