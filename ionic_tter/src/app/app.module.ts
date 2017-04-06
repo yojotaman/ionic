@@ -8,10 +8,10 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 
 import {VerNotificationPage} from '../pages/notification/verNotification';
-
-import {Fav} from '../components/fav/fav'
-
+import {Fav} from '../components/fav/fav';
 import {UserService} from '../services/user.service';
+
+//import {DBService} from '../services/db.services';
 
 //refactor por router
 
@@ -54,6 +54,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserService
+    //DBService
   ]
 })
 export class AppModule {}

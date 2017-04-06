@@ -6,6 +6,8 @@ import {TabsPage} from '../tabs/tabs';
 
 import {UserService} from '../../services/user.service';
 
+//import {DBService} from '../../services/db.services';
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -18,7 +20,13 @@ export class LoginPage {
         private alertCtrl: AlertController, 
         public loadingCtrl: LoadingController,
         public navCtrl: NavController,
-        private userservice:UserService) {
+        private userservice:UserService
+        //private dbService:DBService 
+        ) {
+
+            //dbService.openDatabase();
+            //dbService.createTable();
+            //console.dir(dbService.getAll());
     }
 
     ngOnInit(){
