@@ -13,7 +13,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {VerNotificationPage} from '../pages/notification/verNotification';
 import {Fav} from '../components/fav/fav';
 import {UserService} from '../services/user.service';
+//import {DBService} from '../services/db.services';
 
+var links = [
+  {component: LoginPage, name:'Login', segment:'login'},
+  {component: TabsPage, name: 'tabs', segment: 'tabs' },
+  {component: VerNotificationPage, name: 'notification', segment: 'notification/:id' }
+
+];
+
+//FIREBASE
 import {AngularFireModule} from 'angularfire2';
 
 export const CONFIG = {
@@ -25,17 +34,29 @@ export const CONFIG = {
     messagingSenderId: "334839116393"
   };
 
-//import {DBService} from '../services/db.services';
 
-//refactor por router
 
-var links = [
-  {component: LoginPage, name:'Login', segment:'login'},
-  {component: TabsPage, name: 'tabs', segment: 'tabs' },
-  {component: VerNotificationPage, name: 'notification', segment: 'notification/:id' }
+//CLOUD NOTIFICATION PAGE
 
-];
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 
+const CLOUDSETTINGS: CloudSettings {
+    core:{
+      app_id: '3a7c9817'
+    },
+    push: {
+      sender_id: '334839116393',
+      pluginConfig: {
+        ios:{
+          badge:true,
+          sound:true
+        }, 
+        android:{
+          iconColor:'#343434'
+        }
+      }
+    }
+}
 
 
 @NgModule({
@@ -51,7 +72,9 @@ var links = [
   ],
   imports: [
     IonicModule.forRoot(MyApp, {}, links), 
-    AngularFireModule.initializeApp(CONFIG)
+    AngularFireModule.initializeApp(CONFIG),
+    CloudModule. forRoot(CLOUDSETTINGS)
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -25,24 +25,27 @@ export class Fav {
   alerta(){
 
       if (this.test == ""){
+          this.test = "primary";
+        this.icon = "ios-heart";
         //obtener el valor inicial
         let cant:number = parseInt(this.cantidad) + 1;
         
         this.listado.update(this.key, {
           fav : cant
         });
-        this.test = "primary";
-        this.icon = "ios-heart";
+        
       }
       else{
+
+          this.test = "";
+        this.icon = "ios-heart-outline";
         //obtener el valor inicial
         let cant:number = parseInt(this.cantidad) - 1;
         
         this.listado.update(this.key, {
           fav : cant
         });
-        this.test = "";
-        this.icon = "ios-heart-outline";
+        
       }
       this.onFav.emit("gracias por hacer fav");
   }
