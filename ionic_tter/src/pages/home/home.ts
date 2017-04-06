@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 
-import { twitt } from '../../commons/twitt';
+//import { twitt } from '../../commons/twitt';
 
 import { UserService } from '../../services/user.service';
 
@@ -25,9 +25,9 @@ export class HomePage {
   //   ];
 
   constructor(
-    public navCtrl: NavController,
-    private userService: UserService,
-    public database: AngularFireDatabase
+    public navCtrl: NavController, 
+      private userService: UserService,
+      public database: AngularFireDatabase
       ) {
 
         this.listado = this.database.list('/twitts');
@@ -35,14 +35,27 @@ export class HomePage {
         this.listado.push({
           img:'https://images.pexels.com/photos/27411/pexels-photo-27411.jpg?w=940&h=650&auto=compress&cs=tinysrgb', 
           nick_name:'@usuario1', 
-          text:'Me encanta esta aplicación'
+          text:'Me encanta esta aplicación',
+          retwits:0,
+          reply:0,
+          fav:0
         });
         this.listado.push({
-          img:'https://images.pexels.com/photos/101584/pexels-photo-101584.jpeg?w=940&h=650&auto=compress&cs=tinysrgb', nick_name:'@usuario2', text:'Excelente poder tenerla en mi celular'
+          img:'https://images.pexels.com/photos/101584/pexels-photo-101584.jpeg?w=940&h=650&auto=compress&cs=tinysrgb', 
+          nick_name:'@usuario2', 
+          text:'Excelente poder tenerla en mi celular',
+          retwits:0,
+          reply:0,
+          fav:0
         });
-        this.listado.push(
-          {img:'https://images.pexels.com/photos/206559/pexels-photo-206559.jpeg?w=940&h=650&auto=compress&cs=tinysrgb', nick_name:'@usuario3', text:'cualquier cosa'}
-        );
+        this.listado.push({
+          img:'https://images.pexels.com/photos/206559/pexels-photo-206559.jpeg?w=940&h=650&auto=compress&cs=tinysrgb', 
+          nick_name:'@usuario3', 
+          text:'cualquier cosa',
+          retwits:0,
+          reply:0,
+          fav:0
+        });
 
   }
 
