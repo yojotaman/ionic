@@ -40,7 +40,7 @@ export const CONFIG = {
 
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 
-const CLOUDSETTINGS: CloudSettings {
+const CLOUDSETTINGS: CloudSettings ={
     core:{
       app_id: '3a7c9817'
     },

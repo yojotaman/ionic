@@ -8,6 +8,8 @@ import {UserService} from '../../services/user.service';
 
 //import {DBService} from '../../services/db.services';
 
+import {Geolocation} from 'ionic-native';
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -29,9 +31,19 @@ export class LoginPage {
             //console.dir(dbService.getAll());
     }
 
-    ngOnInit(){
+    ionViewWillEnter(){
         console.log("arranco el init");
-        //si el usuario esta logueado redireccionar a la home
+        
+        Geolocation.getCurrentPosition().then(pos => {
+        console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
+        });
+
+        let watch = Geolocation.watchPosition().subscribe(pos => {
+        console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
+        });
+
+        // to stop watching
+        watch.unsubscribe();
     }
 
     login = ():void=>{
