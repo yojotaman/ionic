@@ -20,5 +20,9 @@ export class HomePage {
 
   }
 
+  onFav(response:string){
+    console.log(response);
+  }
+
 }
 

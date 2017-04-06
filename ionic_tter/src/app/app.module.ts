@@ -9,6 +9,9 @@ import { LoginPage } from '../pages/login/login';
 
 import {VerNotificationPage} from '../pages/notification/verNotification';
 
+import {Fav} from '../components/fav/fav'
+
+import {UserService} from '../services/user.service';
 
 //refactor por router
 
@@ -29,7 +32,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     TabsPage,
     LoginPage,
-    VerNotificationPage
+    VerNotificationPage,
+    Fav
   ],
   imports: [
     IonicModule.forRoot(MyApp, {}, links)
@@ -42,12 +46,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     TabsPage,
     LoginPage,
-    VerNotificationPage
+    VerNotificationPage,
+    
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserService
   ]
 })
 export class AppModule {}

@@ -4,6 +4,8 @@ import { AlertController, LoadingController, NavController } from 'ionic-angular
 
 import {TabsPage} from '../tabs/tabs';
 
+import {UserService} from '../../services/user.service';
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -15,7 +17,8 @@ export class LoginPage {
     constructor(
         private alertCtrl: AlertController, 
         public loadingCtrl: LoadingController,
-        public navCtrl: NavController) {
+        public navCtrl: NavController,
+        private userservice:UserService) {
     }
 
     ngOnInit(){
@@ -25,21 +28,38 @@ export class LoginPage {
 
     login = ():void=>{
         if (this.user.email != "" && this.user.password != ""){
+
+            let usuarios;
+
+
             let loading = this.loadingCtrl.create({
                 content: 'Please wait...'
             });
             loading.present();
-            setTimeout(() => {
-                loading.dismiss();
-                this.navCtrl.push(TabsPage);
-              
-                
-            }, 5000);
+
+            let login:false;
+            this. userservice.loginUser(this.user.email, this.user.password)
+                .then(
+                    (response) =>{
+                        loading.dismiss();
+                        if (response!== undefined){
+                            this.navCtrl.push(TabsPage);
+                        }
+                        else{
+                            let alert = this.alertCtrl.create({
+                            title: 'Login',
+                            subTitle: 'Usuario y/o contraseña invalida.',
+                            buttons: ['Aceptar']
+                        });
+                        alert.present();
+                        }
+                    }
+                )           
         }
         else{
             let alert = this.alertCtrl.create({
                     title: 'Login',
-                    subTitle: 'Usuario y/o contraseña invalida.',
+                    subTitle: 'Complete todos los campos.',
                     buttons: ['Aceptar']
                 });
                 alert.present();
