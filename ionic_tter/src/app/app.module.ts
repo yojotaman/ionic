@@ -59,6 +59,8 @@ const CLOUDSETTINGS: CloudSettings ={
 }
 
 
+import {AdMob} from 'ionic-native';
+
 @NgModule({
   declarations: [
     MyApp,
