@@ -11,9 +11,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {VerNotificationPage} from '../pages/notification/verNotification';
+import { SignInPage } from '../pages/login/signin';
 import {Fav} from '../components/fav/fav';
 import {UserService} from '../services/user.service';
 //import {DBService} from '../services/db.services';
+import {AdMob} from 'ionic-native';
 
 var links = [
   {component: LoginPage, name:'Login', segment:'login'},
@@ -56,10 +58,10 @@ const CLOUDSETTINGS: CloudSettings ={
         }
       }
     }
-}
+};
 
 
-import {AdMob} from 'ionic-native';
+//
 
 @NgModule({
   declarations: [
@@ -70,7 +72,8 @@ import {AdMob} from 'ionic-native';
     TabsPage,
     LoginPage,
     VerNotificationPage,
-    Fav
+    Fav,
+    SignInPage
   ],
   imports: [
     IonicModule.forRoot(MyApp, {}, links), 
@@ -87,13 +90,16 @@ import {AdMob} from 'ionic-native';
     TabsPage,
     LoginPage,
     VerNotificationPage,
+    Fav,
+    SignInPage
     
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserService
+    UserService,
+    AdMob
     //DBService
   ]
 })

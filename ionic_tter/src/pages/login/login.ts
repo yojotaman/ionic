@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { AlertController, LoadingController, NavController } from 'ionic-angular';
 
 import {TabsPage} from '../tabs/tabs';
+import { SignInPage } from './signin';
 
 import {UserService} from '../../services/user.service';
 
@@ -12,23 +13,26 @@ import {Geolocation} from 'ionic-native';
 
 import {AdMob} from 'ionic-native';
 
+import { Auth, User } from '@ionic/cloud-angular';
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
 export class LoginPage {
 
-    user = {"email": "", "password":""};
+    _user = {"email": "", "password":""};
 
     constructor(
         private alertCtrl: AlertController, 
         public loadingCtrl: LoadingController,
         public navCtrl: NavController,
         private userservice:UserService,
-        private AdMob:AdMob
+        private AdMob:AdMob,
+        public auth: Auth, 
+        public user: User
        
         ) {
-
            
     }
 
@@ -46,18 +50,13 @@ export class LoginPage {
         // to stop watching
         watch.unsubscribe();
 
-        AdMob.prepareInterstitial('test-banner').then(
-            ()=>{
-                AdMob.showInterstitial();
-            }
-        );
+         AdMob.prepareInterstitial('test-banner')
+            .then(() => { AdMob.showInterstitial(); });
         
     }
 
     login = ():void=>{
-        if (this.user.email != "" && this.user.password != ""){
-
-            let usuarios;
+        if (this._user.email != "" && this._user.password != ""){
 
 
             let loading = this.loadingCtrl.create({
@@ -65,41 +64,38 @@ export class LoginPage {
             });
             loading.present();
 
-            let login:false;
-            this. userservice.loginUser(this.user.email, this.user.password)
-                .then(
-                    (response) =>{
+            let details = {'email': this._user.email, 'password': this._user.password};
+
+            this.auth.login('basic', details).then(
+                
+                (response)=>{
+                    loading.dismiss();
+                    console.log(response);
+                    this.navCtrl.push(TabsPage);
+                }, (err) => {
                         loading.dismiss();
-                        if (response!== undefined){
-                            this.navCtrl.push(TabsPage);
-                        }
-                        else{
-                            let alert = this.alertCtrl.create({
+                        let alert = this.alertCtrl.create({
                             title: 'Login',
-                            subTitle: 'Usuario y/o contraseña invalida.',
+                            subTitle: 'Usuario y/o contraseña invalida',
                             buttons: ['Aceptar']
                         });
                         alert.present();
-                        }
+                        console.log(err);
                     }
-                )           
+                );
+                
         }
         else{
             let alert = this.alertCtrl.create({
-                    title: 'Login',
-                    subTitle: 'Complete todos los campos.',
-                    buttons: ['Aceptar']
-                });
-                alert.present();
-        }
-
-       
+                title: 'Login',
+                subTitle: 'Debe completar todos los campos',
+                buttons: ['Aceptar']
+            });
+            alert.present();
+        }  
     }
-
 
     signIn = ():void=>{
-        alert("signIn");
+        this.navCtrl.push(SignInPage);
     }
-
-
 }
